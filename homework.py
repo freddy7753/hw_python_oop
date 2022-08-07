@@ -30,9 +30,9 @@ class Training:
                  duration: float,
                  weight: float,
                  ) -> None:
-        self.action = action
-        self.duration_h = duration
-        self.weight = weight
+        self.action: int = action
+        self.duration_h: float = duration
+        self.weight: float = weight
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
@@ -61,12 +61,6 @@ class Running(Training):
     MULTIPLIER_FOR_MEAN_SPEED: int = 18
     COEFF_FOR_CORRECTING_IN_RUN: int = 20
 
-    def __init__(self,
-                 action: int,
-                 duration_h: float,
-                 weight: float):
-        super().__init__(action, duration_h, weight)
-
     def get_spent_calories(self) -> float:
         return ((self.MULTIPLIER_FOR_MEAN_SPEED * self.get_mean_speed()
                 - self.COEFF_FOR_CORRECTING_IN_RUN)
@@ -85,7 +79,7 @@ class SportsWalking(Training):
                  weight: float,
                  height: float):
         super().__init__(action, duration, weight)
-        self.height = height
+        self.height: float = height
 
     def get_spent_calories(self) -> float:
         return (self.MULTIPLIER_COEFF_TO_WEIGHT_WLK * self.weight
@@ -108,8 +102,8 @@ class Swimming(Training):
                  length_pool: float,
                  count_pool: float):
         super().__init__(action, duration, weight)
-        self.length_pool = length_pool
-        self.count_pool = count_pool
+        self.length_pool: float = length_pool
+        self.count_pool: float = count_pool
 
     def get_mean_speed(self) -> float:
         return (self.length_pool * self.count_pool
