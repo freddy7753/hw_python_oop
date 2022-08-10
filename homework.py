@@ -132,7 +132,7 @@ def read_package(workout_type: str, data: list) -> Training:
 
 def main(training: Training) -> NoReturn:
     """Главная функция."""
-    info: Training = training.show_training_info()
+    info: InfoMessage = training.show_training_info()
     print(info.get_message())
 
 
